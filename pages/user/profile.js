@@ -14,10 +14,17 @@ import Head from "next/head";
 import Layout from "../../components/Layout";
 import { BsFillPatchCheckFill } from "react-icons/bs";
 import React from "react";
+import { useRouter } from "next/router";
 
 function profile() {
   const user = null;
+  const router = useRouter();
 
+  React.useEffect(() => {
+    if (!user) {
+      router.push("/?error=unauthorized");
+    }
+  });
   return (
     <Box>
       <Head>
