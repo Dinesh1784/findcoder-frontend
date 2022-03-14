@@ -9,12 +9,14 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import axios from "axios";
+import { useRouter } from "next/router";
 import React from "react";
 import Layout from "../../components/Layout";
 
 const projects = () => {
   const [products, setProducts] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
+  const router = useRouter();
   const getProducts = async () => {
     setIsLoading(true);
     const { data } = await axios.get("https://fakestoreapi.com/products");
@@ -44,6 +46,9 @@ const projects = () => {
                       objectFit={"cover"}
                       src={prod.image}
                       alt={prod.title}
+                      onClick={() => {
+                        router.push(`/projects/${prod.id}`);
+                      }}
                     />
                     <Text>{prod.title}</Text>
                   </VStack>
