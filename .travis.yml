@@ -1,0 +1,8 @@
+language: node_js
+
+script:
+  - npm
+  - npm run dev
+
+after_success:
+  - echo "Success"
